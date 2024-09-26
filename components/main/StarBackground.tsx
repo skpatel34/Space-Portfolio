@@ -7,7 +7,7 @@ import * as THREE from "three"; // Importing THREE for types
 // @ts-expect-error: maath has no official types
 import * as random from "maath/random/dist/maath-random.esm";
 
-const StarBackground = (props: JSX.IntrinsicElements["group"]) => {
+const StarBackground = (props: JSX.IntrinsicElements["points"]) => {
   // Use useRef for Points component from @react-three/fiber
   const ref = useRef<THREE.Points>(null); // Correctly typing ref for THREE.Points
   const [sphere] = useState(() =>
@@ -22,17 +22,15 @@ const StarBackground = (props: JSX.IntrinsicElements["group"]) => {
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-        <PointMaterial
-          transparent
-          color="#fff"
-          size={0.002}
-          sizeAttenuation
-          depthWrite={false}
-        />
-      </Points>
-    </group>
+    <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+      <PointMaterial
+        transparent
+        color="#fff"
+        size={0.002}
+        sizeAttenuation
+        depthWrite={false}
+      />
+    </Points>
   );
 };
 
