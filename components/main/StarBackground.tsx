@@ -3,11 +3,12 @@
 import React, { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three"; // <-- Add this import
 // @ts-expect-error: maath has no official types
 import * as random from "maath/random/dist/maath-random.esm";
 
 const StarBackground = (props: JSX.IntrinsicElements["group"]) => {
-  const ref = useRef<THREE.Points>(null); // Specify the type as THREE.Points
+  const ref = useRef<THREE.Points>(null); // Use THREE.Points here
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
